@@ -1,0 +1,20 @@
+# This file has all the atomes we include in our model and their abundances
+# State is showing whether the specific atom is used in th emodel or not. state = 0 means the atom is not included in the model and state = 1 means the model includes that atom
+# the first assumption is that the abundace of the atomes is solar, but new lines with new abundences can be added to the right and then in the main code for abundance change the read line to read the input abundance
+#I can have a column in this file indicating which column for abundance should be read, or have a user interactor and there mentioning which column should be read for the abundance, CI(O) = 2.51e8,CI(C) = 2.45e7. The carbon in CI colum includes carbon molecules from oberg(8.45e7)
+#As a try I make it so that there is no Fe, Mg, and Al in the gas phase after chondrite condensation. Mg(CI)= 3.39e7, Al(CI)=2.69e6, Fe(CI)=2.82e7	
+
+# Atom name 	State	file name	abundace(CI)	Abundance(Solar)	Mass (AMU)
+01	H	1	atm_H		1.66e8		1e12			1.0079
+02	He	1	atm_He		1.95e1		8.51e10			4.0026
+03	Li	1	atm_Li		1.82e3		1.82e3			6.941
+06	C	1	atm_C		2.47e7		2.69e8			12.0107
+07	N	1	atm_N		1.82e6		6.76e7			14.0067
+08	O	1	atm_O		1.04e8		4.90e8			15.9994
+11	Na	1	atm_Na		1.86e6		1.86e6			22.9897
+12	Mg	1	atm_Mg		3.98e7		3.98e7			24.305
+13	Al	1	atm_Al		2.82e6		2.82e6			26.9815
+14	Si	1	atm_Si		3.24e7		3.24e7			28.0855
+16	S	1	atm_S		1.41e7		1.41e7			32.065
+19	K	1	atm_K		1.20e5		1.20e5			39.0983
+26	Fe	1	atm_Fe		3.16e7		3.16e7			55.845

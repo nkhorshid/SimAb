@@ -1,0 +1,70 @@
+Folders:
+Set1: This version does not have any fancy feature but is the one I use and works
+Set2: This version is based on version 1 and works in a way that chemistry module calculates the composition at the same time as the formation(This is to get rid of the gap)
+Set3: This version is based on version 1 and uses chemistry module to calculate dTg for disk module as well
+
+Chem:
+seems to be an oder buggy version of Chem1(I keep it in trash for now)
+
+Chem1_v1:
+Calculates the dTg at each given temperature as well as what is the gas and solid componants
+
+Chem1:
+This is similar to Chem1_v1, this one is modified to work with planet_m inorder to treat the planets that are formed neer the ice line better.
+
+disk_v1:
+Calculates temperature, density, speed of sound, angular velocity, and scale height
+
+disk:
+Same as disk_v1 it is modified to be compatible with corecting for accreting planetesimals at the ice lines
+
+main:
+runs one single model with the given initial state and final state
+
+planet:
+forms a planet in 3 different ways
+-constant migration
+-migration that matches the studies
+-a planet with a given mass and distance with a constant migration(I think, we are not sure if this one does not have any biases)
+
+planet_t:
+forms a planet at the given position with a given mass considering a physical migration. has a parameter for migration speed.
+
+This model can be used for a single run with fixing the migration speed manualy
+
+planet_m_v1:
+similar to planet_t but trys to find the value for the open prameter itself.
+
+planet_m_v2:
+Similar to planet_m_v1, except the condition to stop the formation is when the planet is where it should be. This one has so far not caused an error in its formation unlick the older version.
+
+planet_m:
+Similar to planet_m_v2, this one tries to fix the problem with calculating chemistry so it treats those that are formed close to the ice line better
+
+plot1:
+plots a scatter plot for any given file
+
+plot2:
+plots how much planetesimal or gas is accreted at each point for a given test and run number
+
+
+run1:
+similar to run, this one is compatible with planet_m to treat planets that are formed closer to the ice line better
+
+run:
+runs multiple models with random initial conditions
+
+test:
+calculates the disk properties and the dTg
+used for debuging
+
+variable:
+has all the initial standard values and unit change and constants
+
+write:
+writes the information in different ways
+-write the information for one single run
+-writes the main information for multiple runs
+-write the chemistry information or one single run
+
+

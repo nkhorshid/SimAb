@@ -1,0 +1,19 @@
+# This file has all the atomes we include in our model and their abundances
+# State is showing whether the specific atom is used in th emodel or not. state = 0 means the atom is not included in the model and state = 1 means the model includes that atom
+# the first assumption is that the abundace of the atomes is solar, but new lines with new abundences can be added to the right and then in the main code for abundance change the read line to read the input abundance
+#I can have a column in this file indicating which column for abundance should be read, or have a user interactor and there mentioning which column should be read for the abundance
+
+# Atom name 	State	file name	abundace(CI)	Abundance(Solar)	Mass (AMU)
+01	H	1	atm_H		5.13e6		2.93e10			1.0079
+02	He	1	atm_He		0.601		2.47e9			4.0026
+03	Li	1	atm_Li		55.6		55.6			6.941
+06	C	1	atm_C		7.60e5		7.19e			12.0107
+07	N	1	atm_N		5.53e4		2.12e6			14.0067
+08	O	1	atm_O		7.63e6		1.57e7			15.9994
+11	Na	1	atm_Na		5.7e4		5.77e4			22.9897
+12	Mg	1	atm_Mg		1.03e6		1.03e6			24.305
+13	Al	1	atm_Al		8.27e4		8.46e4			26.9815
+14	Si	1	atm_Si		1e6		1e6			28.0855
+16	S	1	atm_S		4.38e5		4.38e5			32.065
+19	K	1	atm_K		3.65e3		3.76e3			39.0983
+26	Fe	1	atm_Fe		8.7e5		8.7e5			55.845

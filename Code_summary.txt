@@ -1,0 +1,59 @@
+#####################
+Folders:
+#####################
+Set1: This version does not have any fancy feature but is the one I use and works
+Set2: This version is based on version 1 and works in a way that chemistry module calculates the composition at the same time as the formation(This is to get rid of the gap)
+Set3: This version is based on version 1 and uses chemistry module to calculate dTg for disk module as well
+Arcis:
+#####################
+Latest version(Simab)
+#####################
+chem:
+disk:
+planet:
+planet_i:
+run:
+test.py:
+
+#####################
+Jupyter codes:
+#####################
+Corrolation:
+Main:
+Plot:
+Test:
+Test(copy):
+
+#####################
+Common modules:
+#####################
+Variable:
+Write:
+
+#####################
+Set1:
+#####################
+Chem1:
+chem_v1:
+disk:
+planet:
+planet_m:
+planet_p
+run:
+
+#####################
+Set2:
+#####################
+Chem1_v2:
+disk_v2:
+planet_m_v2:
+planet_m_v3:
+run_v2:
+
+#####################
+Set3:
+#####################
+chem1:
+disk:
+planet:
+run:
