@@ -12,29 +12,28 @@ import variable as var
 from planet import Planet
 from write import Write
 import os
-import numpy as np
+import sys
 
 
-
-#n = sys.argv[1]
-n = 8
+#Setting the name or the number of the run, and the file and folder where the outputs will be stored
+n = sys.argv[1]
 os.mkdir(var.dst+'Run'+str(n))
-dstg = np.array([0,0.2,0.5,0.7,0.9])
-
-#var.pls_r = dstg[int(n)]
 t_dest = var.dst + 'run_sum'+str(n)+'.txt'
 w = Write(t_dest,2)
+
+#Setting the initial values
 var.r_f = 0.02*var.au
-r_max = 100*var.au
-r_min = 0.02*var.au
-var.con_pl = 2
-var.con_chem = 1
 var.M_f = 318*var.M_earth
 
+r_max = 100*var.au #Maximum initial orbital distance minus the minimum initial orbital distance in AU
+r_min = 0.02*var.au #Minimum initial orbital distance in AU
+M_min = 5 #Minimum initial mass in earth mass
+M_max = 30 #Maximum initial mass minus the minimum mass in earth mass
+n_run = 10 #Number of the runs
 
 print ('This is the folder number ',n)
 i = 0
-while i<10000:
+while i<n_run:
     #Values 
     var.dstg_r = random.uniform(0,1)
     var.pls_r = random.uniform(0,1)
@@ -44,8 +43,7 @@ while i<10000:
     if var.dstg_r+var.pls_r<=1 and var.r_c != var.r_f:
         
         
-        var.M_c = (random.uniform(0,1)*30+5)*var.M_earth
-        #print ('******************values',var.M_c/var.M_earth,'\t',var.r_c/var.au,'\t',var.pls_r ,'\t',var.dstg_r)
+        var.M_c = (random.uniform(0,1)*M_max+M_min)*var.M_earth
         plnt = Planet(var.con_pl)
         
         if plnt.check ==1:
@@ -68,5 +66,5 @@ while i<10000:
             
             print ('end of ', name)
         elif plnt.check == 0:
-            print ('this run can not be done\t',var.M_c/var.M_earth,'\t',var.r_c/var.au,'\t',var.dstg_r,'\t',var.pls_r)   
+            print ('this input did not converge\t',var.M_c/var.M_earth,'\t',var.r_c/var.au,'\t',var.dstg_r,'\t',var.pls_r)   
 w.close()

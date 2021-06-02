@@ -45,9 +45,7 @@ Initial inputs:
 ##########################
 """
 dst = 'Output/'
-#Input values:
-dest ='test.txt'
-c_dest='test_chem.txt'
+dest ='output.txt'
 
 #Planet:
 M_c = 20.*M_earth #Mass of the initial core in earth mass
