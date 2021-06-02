@@ -72,7 +72,7 @@ class Planet():
         
         if self.con == 2:
             if self.con1==2:
-                self.dt = self.C*self.r*self.disk.ang_v/(self.disk.Cs**2)*self.dr 
+                self.dt = self.C*self.r*self.disk.ang_v/(self.disk.a*self.disk.Cs**2)*self.dr 
             else:
                 j = 0
                 while j<3:
@@ -116,7 +116,7 @@ class Planet():
     def optimize(self,n):
         self.r_min = self.r+self.rh
         self.dr = (self.r-var.r_f)/n
-        self.dt = self.C*self.r*self.disk.ang_v/(self.disk.Cs**2)*self.dr 
+        self.dt = self.C*self.r*self.disk.ang_v/(self.disk.a*self.disk.Cs**2)*self.dr 
        
         self.con1 = 2
         self.run_test()

@@ -85,9 +85,9 @@ class Chem ():
     ###########################################################################    
     def chem(self,T):
         #Sets the abundances based on the temperature
-        if T< 500:
+        if T<= 500:
             self.chem_LT(T)
-        elif T>=500:
+        elif T>500:
             self.chem_HT(T)
         
     

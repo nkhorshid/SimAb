@@ -1,8 +1,0 @@
-#!/bin/bash 
-
-for i in {0..5}; do
-cd Output
-mkdir Run$i
-cd ..
-python Run1.py $i
-done

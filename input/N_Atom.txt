@@ -1,8 +1,7 @@
 # This file has all the atomes we include in our model and their abundances
 # State is showing whether the specific atom is used in th emodel or not. state = 0 means the atom is not included in the model and state = 1 means the model includes that atom
-# the first assumption is that the abundace of the atomes is solar, but new lines with new abundences can be added to the right and then in the main code for abundance change the read line to read the input abundance
-#I can have a column in this file indicating which column for abundance should be read, or have a user interactor and there mentioning which column should be read for the abundance, CI(O) = 2.51e8,CI(C) = 2.45e7. The carbon in CI colum includes carbon molecules from oberg(8.45e7)
-#As a try I make it so that there is no Fe, Mg, and Al in the gas phase after chondrite condensation. Mg(CI)= 3.39e7, Al(CI)=2.69e6, Fe(CI)=2.82e7	
+# The first assumption is that the abundace of the atomes is solar, but new lines with new abundences can be added to the right and then in the main code for abundance change the read line to read the input abundance
+# The actual abundances from chondrites for oxygen abd carbon is different. We use the chondrite abundances for majority of the atoms. CI(O) = 2.51e8,CI(C) = 2.45e7. Using the chondrite values for Fe, Mg, and Al means that there are still some left in the gas phase I changed these values so that all of them are fully condences, even though it does not change the results drastically, making it so would make the abundances in the disk self consistance. The chondrite abundance of these elements: Mg(CI)= 3.39e7, Al(CI)=2.69e6, Fe(CI)=2.82e7	
 
 # Atom name 	State	file name	abundace(CI)	Abundance(Solar)	Mass (AMU)
 01	H	1	atm_H		1.66e8		1e12			1.0079
