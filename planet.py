@@ -78,7 +78,6 @@ class Planet():
                 while j<3:
                     self.C = self.C_max
                     a = self.optimize(10)
-                    #print ('This is a',a)
                     
                     if a== -1:
                         self.C_max = self.C_max * 5.
