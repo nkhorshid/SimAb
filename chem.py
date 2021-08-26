@@ -63,15 +63,15 @@ class Chem ():
 	#Calculates the metalicity of gas and dust together
         ab_tot = np.add(ab_s , ab_g)
         ab_tot = ab_tot/ab_tot[0]*1e12
-        M = np.sum(ab_tot[2:])/np.sum(ab_tot[:])
-        self.mtl = np.log(M/self.M_s)
+        M = np.sum(ab_tot[2:])/np.sum(ab_tot[:2])
+        self.mtl = np.log10(M/self.M_s)
     
     ###########################################################################    
     def metalicity_d(self,ab):
 	#Calculates the metalicity of the given abundance
         ab_tot = ab/ab[0]*1e12
-        M = np.sum(ab_tot[2:])/np.sum(ab_tot[:])
-        mtl = np.log(M/self.M_s)
+        M = np.sum(ab_tot[2:])/np.sum(ab_tot[:2])
+        mtl = np.log10(M/self.M_s)
         return mtl
     ###########################################################################        
     def solaricity(self,ab_g,ab_s):
