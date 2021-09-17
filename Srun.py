@@ -14,12 +14,12 @@ from write import Write
 t_dest = 'run_sum.txt'
 w = open(t_dest,'a')
 
-var.M_f = 0.7*var.M_jupiter
+var.M_f = 1*var.M_jupiter
 var.M_c = 10*var.M_earth
-var.r_c = 50*var.au 
+var.r_c = 20.23*var.au 
 var.r_f = 0.02*var.au
 var.dstg_r = 0.0
-var.pls_r = 1.0
+var.pls_r = 0.5
     
 
 plnt = Planet(var.con_pl)
@@ -27,7 +27,7 @@ plnt = Planet(var.con_pl)
 if plnt.check ==1:
     plnt.run()
     T = plnt.disk.tempr(var.r_c)
-    print('result: ',plnt.C,plnt.ch.mtl,plnt.ch.sol[5]/plnt.ch.sol[3]*0.55)
+    print('result: ',plnt.ch.Mmtl,plnt.ch.mtl,plnt.ch.sol[5]/plnt.ch.sol[3]*0.55)
     w.write('\ntest\t'+str(var.M_c/var.M_earth)+'\t'+str(plnt.M/var.M_earth)+'\t'+str(var.r_c/var.au)+
             '\t'+str(plnt.r/var.au)+'\t'+str(var.dstg_r)+'\t'+str(var.pls_r)+'\t'+str(T)+
             '\t'+str(plnt.ch.mtl)+'\t'+str(plnt.ch.sol[0])+'\t'+str(plnt.ch.sol[1])+'\t'+
