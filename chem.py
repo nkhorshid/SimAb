@@ -72,7 +72,7 @@ class Chem ():
 	#Calculates the metalicity of the given abundance
         ab_tot = ab/ab[0]*1e12
         M = np.sum(ab_tot[2:])/np.sum(ab_tot[:2])
-        mtl = np.log10(M/self.M_s_SRCiS)
+        mtl = np.log10(M/self.M_s_ARCiS)
         return mtl
     ###########################################################################    
     def Mmetalicity(self,ab_g,ab_s):
