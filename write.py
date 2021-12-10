@@ -21,7 +21,7 @@ class Write():
                          str(var.dstg_r)+'\t'+str(var.pls_r)+'\t'+str(C)+'\n')
             self.f.write(header)
         elif mod ==2:
-            header = 'Test\tM_c\tM_fin\ta_c\ta_fin\tdstg_r\tpls_r\ttemperature\tmetalicity\tH\tHe\tLi\tC\tN\tO\tNa\tMg\tAl\tSi\tS\tK\tFe\talpha_inverse\n'
+            header = 'Test\tM_c\tM_fin\ta_c\ta_fin\tdstg_r\tpls_r\ttemperature\tMmetalicity\tAmetalicity\tH\tHe\tLi\tC\tN\tO\tNa\tMg\tAl\tSi\tS\tK\tFe\talpha_inverse\n'
             self.f = open(direct,'w')
             self.f.write(header)
             

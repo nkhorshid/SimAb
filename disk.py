@@ -83,7 +83,11 @@ class Disk:
        	#Calculates th etemperature at the given orbital distance
         cons = (3*self.mu*var.mp*self.kr*self.dTg_t)/(128*np.pi**2*self.a*var.kb*var.sig)
 
-        T = (cons*self.M_acc**2*(var.G*self.star.M/r**3)**(3./2))**(1./5)
+        T_vis = (cons*self.M_acc**2*(var.G*self.star.M/r**3)**(3./2))**(1./5)
+        T_irr = 150*(self.star.L/var.L_sun)**(2./7)*(self.star.M/var.M_sun)**(-1./7)*(r/var.au)**(-3./7)
+        #T = (T_vis**4.+T_irr**4.)**(1./4)
+        T=max(T_vis,T_irr)
+        
         self.Cs = np.sqrt(var.kb*T/(self.mu*var.mp))
         self.ang_v = (var.G*self.star.M/r**3.)**(1/2.)
         self.H = self.Cs/self.ang_v
@@ -113,17 +117,23 @@ class Disk:
         self.r_arr = np.zeros_like(self.T_arr)
  
         const = (3.*self.mu *var.mp*self.kr)/(128.*np.pi**2.*self.a*var.kb*var.sig)
-        
+        cons2 = 150*(self.star.L/var.L_sun)**(2./7)*(self.star.M/var.M_sun)**(-1./7)*(1/var.au)**(-3./7)
         for i in range(len(self.T_arr)):
             self.dtg[i] = self.ch.dTg(self.T_arr[i]) 
-            cons = const *self.dTg_t
-            self.r_arr[i] = ((cons*self.M_acc**2/self.T_arr[i]**5)**(2./3)*var.G*self.star.M)**(1./3)
+            cons1 = const *self.dTg_t
+            r1 = ((cons1*self.M_acc**2/self.T_arr[i]**5)**(2./3)*var.G*self.star.M)**(1./3)
+            r2 = (cons2/self.T_arr[i])**(7/3)
+
+            self.r_arr[i] = max(r1,r2)
 
     
     def convert_T(self,T):
 	#Calculates the orbital distance given the temperature
          const = (3.*self.mu *var.mp*self.kr)/(128.*np.pi**2.*self.a*var.kb*var.sig)
+         cons2 = 150*(self.star.L/var.L_sun)**(2./7)*(self.star.M/var.M_sun)**(-1./7)*(1/var.au)**(-3./7)
          dtg = self.dTg_t
-         cons = const *dtg
-         r = ((cons*self.M_acc**2/T**5)**(2./3)*var.G*self.star.M)**(1./3)
+         cons1 = const *dtg
+         r1 = ((cons1*self.M_acc**2/T**5)**(2./3)*var.G*self.star.M)**(1./3)
+         r2 = (cons2/T)**(7/3)
+         r = max(r1,r2)
          return r

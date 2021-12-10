@@ -157,6 +157,7 @@ class Planet():
         self.mas_acc()
         
         self.ch.metalicity(self.abn_t[0,:], self.abn_t[1,:])
+        self.ch.Mmetalicity(self.abn_t[0,:], self.abn_t[1,:])
         self.w.write(self.dt/var.yr,self.M/var.M_earth,self.arr_r[-1]/var.au,self.disk.T,self.dm_g[-1]*self.dt/var.M_earth,self.dm_d[-1]/var.M_earth,self.dTg)
         
         self.ch.solaricity(self.abn_t[0,:], self.abn_t[1,:]) 

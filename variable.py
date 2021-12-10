@@ -65,4 +65,4 @@ con_pl = 2
 con_chem = 1
 
 #Step numbers:
-n=100
+n=1000

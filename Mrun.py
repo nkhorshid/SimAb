@@ -16,20 +16,21 @@ import sys
 
 
 #Setting the name or the number of the run, and the file and folder where the outputs will be stored
-n = sys.argv[1]
+#n = sys.argv[1]
+n = 35
 os.mkdir(var.dst+'Run'+str(n))
 t_dest = var.dst + 'run_sum'+str(n)+'.txt'
 w = Write(t_dest,2)
 
 #Setting the initial values
 var.r_f = 0.02*var.au
-var.M_f = 318*var.M_earth
-
-r_max = 100*var.au #Maximum initial orbital distance minus the minimum initial orbital distance in AU
-r_min = 0.02*var.au #Minimum initial orbital distance in AU
+var.M_f = 1*var.M_jupiter
+#0.90, 3.63, 14.10 110.11
+r_max = 250*var.au #Maximum initial orbital distance minus the minimum initial orbital distance in AU
+r_min = 110.11*var.au #Minimum initial orbital distance in AU
 M_min = 5 #Minimum initial mass in earth mass
 M_max = 30 #Maximum initial mass minus the minimum mass in earth mass
-n_run = 10 #Number of the runs
+n_run = 10000 #Number of the runs
 
 print ('This is the folder number ',n)
 i = 0
@@ -44,6 +45,7 @@ while i<n_run:
         
         
         var.M_c = (random.uniform(0,1)*M_max+M_min)*var.M_earth
+        #var.M_c= 10*var.M_earth
         plnt = Planet(var.con_pl)
         
         if plnt.check ==1:
@@ -58,7 +60,7 @@ while i<n_run:
             T = plnt.disk.tempr(var.r_c)
             w.write(name+'\t'+str(var.M_c/var.M_earth)+'\t'+str(plnt.M/var.M_earth)+'\t'+str(var.r_c/var.au)+
                     '\t'+str(plnt.r/var.au)+'\t'+str(var.dstg_r)+'\t'+str(var.pls_r)+'\t'+str(T)+
-                    '\t'+str(plnt.ch.mtl)+'\t'+str(plnt.ch.sol[0])+'\t'+str(plnt.ch.sol[1])+'\t'+
+                    '\t'+str(plnt.ch.Mmtl)+'\t'+str(plnt.ch.mtl)+'\t'+str(plnt.ch.sol[0])+'\t'+str(plnt.ch.sol[1])+'\t'+
                     str(plnt.ch.sol[2])+'\t'+str(plnt.ch.sol[3])+'\t'+str(plnt.ch.sol[4])+'\t'+
                     str(plnt.ch.sol[5])+'\t'+str(plnt.ch.sol[6])+'\t'+str(plnt.ch.sol[7])+'\t'+
                     str(plnt.ch.sol[8])+'\t'+str(plnt.ch.sol[9])+'\t'+str(plnt.ch.sol[10])+'\t'+

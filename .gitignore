@@ -3,3 +3,5 @@ Output/*
 output.txt
 
 run_sum.txt
+
+*.ipynb

@@ -17,7 +17,8 @@ class Chem ():
         self.M_atm = self.dat[0:, 6].astype(float)
         self.chon = self.dat[0:, 4].astype(float)
         self.atm_nm = self.dat[0:,1]
-        self.M_s = np.sum(self.solar[2:])/np.sum(self.solar[:])
+        self.M_s_ARCiS = np.sum(self.solar[2:])/np.sum(self.solar[:2])
+        self.MM_s = np.sum(self.solar[2:]*self.M_atm[2:])/np.sum(self.solar[:]*self.M_atm[:])
         #self.T_change= np.array([1600.,1300.,900.,700., 500.,120.,47.,20.])
         
     
@@ -63,15 +64,30 @@ class Chem ():
 	#Calculates the metalicity of gas and dust together
         ab_tot = np.add(ab_s , ab_g)
         ab_tot = ab_tot/ab_tot[0]*1e12
-        M = np.sum(ab_tot[2:])/np.sum(ab_tot[:])
-        self.mtl = np.log(M/self.M_s)
+        M = np.sum(ab_tot[2:])/np.sum(ab_tot[:2])
+        self.mtl = np.log10(M/self.M_s_ARCiS)
     
     ###########################################################################    
     def metalicity_d(self,ab):
 	#Calculates the metalicity of the given abundance
         ab_tot = ab/ab[0]*1e12
-        M = np.sum(ab_tot[2:])/np.sum(ab_tot[:])
-        mtl = np.log(M/self.M_s)
+        M = np.sum(ab_tot[2:])/np.sum(ab_tot[:2])
+        mtl = np.log10(M/self.M_s_ARCiS)
+        return mtl
+    ###########################################################################    
+    def Mmetalicity(self,ab_g,ab_s):
+	#Calculates the metalicity of gas and dust together
+        ab_tot = np.add(ab_s , ab_g)
+        ab_tot = ab_tot/ab_tot[0]*1e12
+        M = np.sum(ab_tot[2:]*self.M_atm[2:])/np.sum(ab_tot[:]*self.M_atm[:])
+        self.Mmtl = np.log10(M/self.MM_s)
+    
+    ###########################################################################    
+    def Mmetalicity_d(self,ab):
+	#Calculates the metalicity of the given abundance
+        ab_tot = ab/ab[0]*1e12
+        M = np.sum(ab_tot[2:]*self.M_atm[2:])/np.sum(ab_tot[:]*self.M_atm[:])
+        mtl = np.log10(M/self.MM_s)
         return mtl
     ###########################################################################        
     def solaricity(self,ab_g,ab_s):
@@ -100,12 +116,12 @@ class Chem ():
         
 	#Including CO ice:
         CO = np.zeros(2)
-        CO[0] = np.copy(self.gas[3])*0.6
+        CO[0] = np.copy(self.gas[3])*0.75
         CO[1] = CO[0]
 
         #Including CO2 ice: Add 0.4 to CO if not including CH4
         CO2 = np.zeros(2) 
-        CO2[0] = np.copy(self.gas[3])*0.4
+        CO2[0] = np.copy(self.gas[3])*0.25
         CO2[1] = 2*CO2[0]
 	
 	# =============================================================================
