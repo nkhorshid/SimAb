@@ -116,12 +116,12 @@ class Chem ():
         
 	#Including CO ice:
         CO = np.zeros(2)
-        CO[0] = np.copy(self.gas[3])*0.75
+        CO[0] = np.copy(self.gas[3])*0.85
         CO[1] = CO[0]
 
         #Including CO2 ice: Add 0.4 to CO if not including CH4
         CO2 = np.zeros(2) 
-        CO2[0] = np.copy(self.gas[3])*0.25
+        CO2[0] = np.copy(self.gas[3])*0.15
         CO2[1] = 2*CO2[0]
 	
 	# =============================================================================
