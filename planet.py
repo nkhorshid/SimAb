@@ -1,6 +1,6 @@
 '''
 Modified: Oct 23rd
-@author: niloo
+@author: N.Khorshid
 
 This module forms the planet and calculates its abundances.
 '''

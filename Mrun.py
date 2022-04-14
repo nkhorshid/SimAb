@@ -1,10 +1,12 @@
 """
 Created on Fri Feb 14 09:49:16 2020
-@author: niloo
+@author: N.Khorshid
 
 This is the main function that runs the whole formation code.
 This function sets a random value to the initial conditions and the values for the final mass and position of the plaent.
 n: is the run number
+
+This function runs multiple runs with different initial formation parameters to form a planet of a given mass at a given distance
 
 """
 import random
@@ -17,20 +19,20 @@ import sys
 
 #Setting the name or the number of the run, and the file and folder where the outputs will be stored
 #n = sys.argv[1]
-n = 35
+n = 11
 os.mkdir(var.dst+'Run'+str(n))
 t_dest = var.dst + 'run_sum'+str(n)+'.txt'
 w = Write(t_dest,2)
 
 #Setting the initial values
 var.r_f = 0.02*var.au
-var.M_f = 1*var.M_jupiter
+var.M_f = 5*var.M_jupiter
 #0.90, 3.63, 14.10 110.11
 r_max = 250*var.au #Maximum initial orbital distance minus the minimum initial orbital distance in AU
-r_min = 110.11*var.au #Minimum initial orbital distance in AU
+r_min = 0.02*var.au #Minimum initial orbital distance in AU
 M_min = 5 #Minimum initial mass in earth mass
 M_max = 30 #Maximum initial mass minus the minimum mass in earth mass
-n_run = 10000 #Number of the runs
+n_run = 50000 #Number of the runs
 
 print ('This is the folder number ',n)
 i = 0

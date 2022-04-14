@@ -1,6 +1,6 @@
 '''
 Modified: Oct 23rd
-@author: niloo
+@author: N.Khorshid
 
 This is the variable module.
 This module sets the default values.
@@ -65,4 +65,4 @@ con_pl = 2
 con_chem = 1
 
 #Step numbers:
-n=1000
+n=100
