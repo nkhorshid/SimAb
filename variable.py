@@ -1,6 +1,6 @@
 '''
 Modified: Oct 23rd
-@author: niloo
+@author: N.Khorshid
 
 This is the variable module.
 This module sets the default values.

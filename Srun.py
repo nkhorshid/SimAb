@@ -6,6 +6,10 @@ This is the main function that runs the whole formation code.
 This function sets a random value to the initial conditions and the values for the final mass and position of the plaent.
 n: is the run number
 
+This function runs a single run with the given initial formation parameters.
+The output will be saved in the file specified as t_dest. 
+The output values are atomic abundance ratio to hydrogen compared to that of the solar values [(x/H) of the planet]/[(x/H) of the sun]
+
 """
 import variable as var
 from planet import Planet
