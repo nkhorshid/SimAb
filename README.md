@@ -8,3 +8,5 @@ At this moment you can run the simulation in two different modes.
 You can plot the results using the jupyter codes available.
 
 The values used to write the SimAb paper are available in the output folder.
+
+We kindly ask you to reference the paper if your usage of this simulation resulted in a publication.
