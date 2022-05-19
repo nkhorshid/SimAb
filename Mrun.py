@@ -1,10 +1,12 @@
 """
 Created on Fri Feb 14 09:49:16 2020
-@author: niloo
+@author: N.Khorshid
 
 This is the main function that runs the whole formation code.
 This function sets a random value to the initial conditions and the values for the final mass and position of the plaent.
 n: is the run number
+
+This function runs multiple runs with different initial formation parameters to form a planet of a given mass at a given distance
 
 """
 import random

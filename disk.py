@@ -1,10 +1,11 @@
 '''
 Modified: Oct 23rd
-@author: niloo
+@author: N. Khorshid
 
 This is the disk module.
 We use the dust to gas ratio from the chemistry module to calculate the density profile of the disk.
 For the temperature, we asume a dust to gas ratio of 0.01.
+The temperature is calculated as the maximum value between an irradiation temperature (T_irr) and a viscosity temperature (T_vis)
 '''
 import variable as var
 import numpy as np

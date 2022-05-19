@@ -1,7 +1,7 @@
 """
 Created on Fri Feb 14 09:49:16 2020
 
-@author: niloo
+@author: N.Khorshid
 
 This module does all the writing that is needed during the run
 mod = 1 is used to write all the information of each step for a single simulation
