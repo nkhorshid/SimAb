@@ -39,9 +39,6 @@ class Disk:
        
         #Initial values
         self.star = Star()
-        self.M = 0.01*self.star.M
-        self.R = 20.*var.au #m
-        self.et = 0.01 #Gas velocity / Kepplerian velocity
         
         #define parameters
         self.a = 0.1
