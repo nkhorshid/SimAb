@@ -42,6 +42,7 @@ class Disk:
         self.load_solid_abundance()
         self.load_atoms()
         self.set_icelines()
+
     ###########################################################################
     def call_chemistry(self):
         self.ch=Chem()
@@ -71,24 +72,31 @@ class Disk:
 
 
     ###########################################################################
-    def evolve(self, r):
+    def evolve(self, radial_distance):
 	#Sets the values for the disk at the given orbital distance
-        self.set_dtg(r)
-        self.T = self.tempr(r)
-        self.dens(r)
+
+        self.calculate_v_angular(radial_distance)
+        self.set_dust2gas(radial_distance)
+        self.T=self.calculate_temperature(radial_distance)
+        self.calculate_density(radial_distance)
+        self.calculate_v_sonic()
+        self.calculate_scaleHeight()
+
 
     ###########################################################################
-    def set_dtg(self, r):
+    def set_dust2gas(self, radial_distance):
 	#Finds the dust to gas ratio at the given orbital distance
-        idx = (np.abs(self.r_arr - r)).argmin()
-        if self.r_arr[idx]> r:
+        idx = (np.abs(self.r_arr - radial_distance)).argmin()
+        if self.r_arr[idx]> radial_distance:
             idx = idx -1
         if idx<0:
             idx = 0
         self.dTg = self.dtg[idx]
-
     ###########################################################################
-    def tempr(self, r):
+    def calculate_v_angular(self,radial_distance):
+        self.ang_v = (var.G*self.star.M/radial_distance**3.)**(1/2.)
+
+    def calculate_temperature(self, r):
        	#Calculates th etemperature at the given orbital distance
         cons = (3*self.mu*var.mp*self.kr*self.dTg_t)/(128*np.pi**2*self.a*var.kb*var.sig)
 
@@ -96,15 +104,14 @@ class Disk:
         T_irr = 150*(self.star.L/var.L_sun)**(2./7)*(self.star.M/var.M_sun)**(-1./7)*(r/var.au)**(-3./7)
         #T = (T_vis**4.+T_irr**4.)**(1./4)
         T=max(T_vis,T_irr)
+        return (T)
+    def calculate_v_sonic(self):
+        self.Cs = np.sqrt(var.kb*self.T/(self.mu*var.mp))
 
-        self.Cs = np.sqrt(var.kb*T/(self.mu*var.mp))
-        self.ang_v = (var.G*self.star.M/r**3.)**(1/2.)
+    def calculate_scaleHeight(self):
         self.H = self.Cs/self.ang_v
-
-        return T
-
     ###########################################################################
-    def dens(self,r):
+    def calculate_density(self,r):
 	#Calculates the density at the given orbital distance
         cons = self.mu*var.mp/(3*np.pi*self.a*var.kb)
         self.dns = (cons/self.T) * (self.M_acc*(var.G*self.star.M/(r)**3)**(1./2))
@@ -112,7 +119,7 @@ class Disk:
     def dens_r(self,r):
 	#Is used for ploting density profile of the disk
         self.set_dtg(r)
-        T= self.tempr(r)
+        T= self.temperature(r)
         cons = self.mu*var.mp/(3*np.pi*self.a*var.kb)
         dns = np.zeros(2)
         dns[0] = (cons/T) * (self.M_acc*(var.G*self.star.M/(r)**3)**(1./2))
