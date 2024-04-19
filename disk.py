@@ -96,14 +96,18 @@ class Disk:
     def calculate_v_angular(self,radial_distance):
         self.ang_v = (var.G*self.star.M/radial_distance**3.)**(1/2.)
 
-    def calculate_temperature(self, r):
-       	#Calculates th etemperature at the given orbital distance
+    def T_viscosity(self,r):
         cons = (3*self.mu*var.mp*self.kr*self.dTg_t)/(128*np.pi**2*self.a*var.kb*var.sig)
+        T_vis = (cons*self.M_acc**2*self.ang_v**3.)**(1./5)
+        return (T_vis)
 
-        T_vis = (cons*self.M_acc**2*(var.G*self.star.M/r**3)**(3./2))**(1./5)
+    def T_irradiation(self,r):
         T_irr = 150*(self.star.L/var.L_sun)**(2./7)*(self.star.M/var.M_sun)**(-1./7)*(r/var.au)**(-3./7)
-        #T = (T_vis**4.+T_irr**4.)**(1./4)
-        T=max(T_vis,T_irr)
+        return(T_irr)
+
+    def calculate_temperature(self, r):
+        #T = (self.T_viscosity(r)**4.+T_irradiation(r)**4.)**(1./4)
+        T=max(self.T_viscosity(r),self.T_irradiation(r))
         return (T)
     def calculate_v_sonic(self):
         self.Cs = np.sqrt(var.kb*self.T/(self.mu*var.mp))
