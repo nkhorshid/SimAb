@@ -1,7 +1,11 @@
 Output/*
 *.pyc
 output.txt
-
 run_sum.txt
-
 *.ipynb
+
+src/Output/*
+src/*.pyc
+src/output.txt
+src/run_sum.txt
+src/*.ipynb
