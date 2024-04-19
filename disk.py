@@ -38,9 +38,6 @@ class Disk:
         self.call_chemistry()
         self.call_star()
         self.set_disk_parameters()
-        self.load_stellar_abundance()
-        self.load_solid_abundance()
-        self.load_atoms()
         self.set_icelines()
 
     ###########################################################################
@@ -58,17 +55,6 @@ class Disk:
         self.kr =50 #kg,m
         self.dTg_t = 0.01
 
-    def load_stellar_abundance(self):
-        name_s = 'input/N_Atom.txt'
-        self.dat = np.loadtxt(name_s,dtype= str)
-        self.solar = self.dat[0:, 5].astype(float)
-
-    def load_solid_abundance(self):
-        self.chon = self.dat[0:, 4].astype(float)
-
-    def load_atoms(self):
-        self.M_atm = self.dat[0:, 6].astype(float)
-        self.atm_nm = self.dat[0:,1]
 
 
     ###########################################################################
@@ -120,15 +106,7 @@ class Disk:
         cons = self.mu*var.mp/(3*np.pi*self.a*var.kb)
         self.dns = (cons/self.T) * (self.M_acc*(var.G*self.star.M/(r)**3)**(1./2))
 
-    def dens_r(self,r):
-	#Is used for ploting density profile of the disk
-        self.set_dtg(r)
-        T= self.temperature(r)
-        cons = self.mu*var.mp/(3*np.pi*self.a*var.kb)
-        dns = np.zeros(2)
-        dns[0] = (cons/T) * (self.M_acc*(var.G*self.star.M/(r)**3)**(1./2))
-        dns[1] = dns[0]*self.dTg
-        return dns
+
     ###########################################################################
     def set_icelines(self):
 	#Calculates the orbital distance at the temperatures the abundances in the disk changes
@@ -146,7 +124,7 @@ class Disk:
 
             self.r_arr[i] = max(r1,r2)
 
-
+    ###########################################################################
     def convert_T(self,T):
 	#Calculates the orbital distance given the temperature
          const = (3.*self.mu *var.mp*self.kr)/(128.*np.pi**2.*self.a*var.kb*var.sig)
@@ -157,3 +135,12 @@ class Disk:
          r2 = (cons2/T)**(7/3)
          r = max(r1,r2)
          return r
+    def dens_r(self,r):
+	#Is used for ploting density profile of the disk
+        self.set_dtg(r)
+        T= self.temperature(r)
+        cons = self.mu*var.mp/(3*np.pi*self.a*var.kb)
+        dns = np.zeros(2)
+        dns[0] = (cons/T) * (self.M_acc*(var.G*self.star.M/(r)**3)**(1./2))
+        dns[1] = dns[0]*self.dTg
+        return dns
