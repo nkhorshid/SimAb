@@ -26,11 +26,13 @@ M_jupiter = 317.8*M_earth #kg
 yr = 3.15e7 #sec
 au = 1.5e11 #m
 L_sun = 3.28e26 #w
+#! Change rho_p to rho_solid
 rho_p = 5000. #kg/m3
 rho_ice = 2000. #kg/m3
 
 #Disk that are assumed:
-dTg = 0.01
+#! change to d2g or dust2gas
+dTg = 0.01 #dust to gas
 
 T_ice_H2O = 143.
 T_ice_NH3 = 68.
@@ -44,23 +46,33 @@ T_ice_N2 = 18.
 Initial inputs:
 ##########################
 """
+#! change dst to maindir
 dst = 'Output/'
+#!change dest to mainfile
 dest ='output.txt'
 
 #Planet:
-M_c = 20.*M_earth #Mass of the initial core in earth mass
-r_c = 30.*au #distance of the core to the star AU
-M_f = 318.*M_earth #Planet final mass inM_earth
-r_f = 0.02*au #Planet final distance in AU
+#!change M_c and r_c to M_i and r_i
+M_f = 1 #Mass of the initial core in Jupiter mass
+M_c = 10 #Planet final mass in M_earth
+r_c = 20.23 #distance of the core to the star AU
+r_f = 0.02 #Planet final distance in AU
 
 
-#Values 
+#Values
+#Change dstg_r to dustgrain_ratio
 dstg_r = 0.5
-pls_r = 0.2
+#change pls_r to planetesimal_ratio
+pls_r = 0.5
+#I do not even know what this is!
 plsTg = 10
+
 #Parameter
+#Check to see if this C_max is needed and what it is
 C_max = 2
+
 #conditions:
+#Chck to see of there are multiple conditions or not
 con_pl = 2
 con_chem = 1
 
