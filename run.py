@@ -20,10 +20,10 @@ def single_run(PlanetMass=var.M_f,PlanetDistanse=var.r_f,CoreMass=var.M_c,CoreDi
     t_dest = 'run_sum.txt'
     w = open(t_dest,'a')
 
-    var.M_f = 1*var.M_jupiter
-    var.M_c = 10*var.M_earth
-    var.r_c = 20.23*var.au
-    var.r_f = 0.02*var.au
+    var.M_f = PlanetMass*var.M_jupiter
+    var.M_c = CoreMass*var.M_earth
+    var.r_c = CoreDistance*var.au
+    var.r_f = PlanetDistanse*var.au
 
 
     plnt = Planet(var.con_pl)
@@ -51,8 +51,8 @@ def Multi_run(n=0,PlanetMass=var.M_f,PlanetDistanse=var.r_f, r_max = 250,r_min =
     w = Write(t_dest,2)
 
     #Setting the initial values
-    var.r_f = PlanetDistanse
-    var.M_f = PlanetMass
+    var.r_f = PlanetDistanse *var.au
+    var.M_f = PlanetMass *var.M_jupiter
     #0.90, 3.63, 14.10 110.11
     r_max = r_max*var.au #Maximum initial orbital distance minus the minimum initial orbital distance in AU
     r_min = r_min*var.au #Minimum initial orbital distance in AU
