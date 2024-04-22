@@ -3,9 +3,11 @@ Output/*
 output.txt
 run_sum.txt
 *.ipynb
+dist/*
 
-src/Output/*
-src/*.pyc
-src/output.txt
-src/run_sum.txt
-src/*.ipynb
+src/SimAb_test/Output/*
+src/SimAb_test/*.pyc
+src/SimAb_test/output.txt
+src/SimAb_test/run_sum.txt
+src/SimAb_test/*.ipynb
+src/SimAb_test/test.py
