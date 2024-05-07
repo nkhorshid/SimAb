@@ -10,10 +10,10 @@ setup(
     # Needed for dependencies
     install_requires=['numpy'],
 
-    version='0.1',
+    version='0.0.2',
 
     license='MIT',
     description='An example of a python package from pre-existing code',
     # We will also need a readme eventually (there will be a warning)
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
 )

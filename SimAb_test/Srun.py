@@ -11,9 +11,9 @@ The output will be saved in the file specified as t_dest.
 The output values are atomic abundance ratio to hydrogen compared to that of the solar values [(x/H) of the planet]/[(x/H) of the sun]
 
 """
-import variable as var
-from planet import Planet
-from write import Write
+from SimAb_test import variable as var
+from SimAb_test.planet import Planet
+from SimAb_test.write import Write
 
 t_dest = 'run_sum.txt'
 w = open(t_dest,'a')

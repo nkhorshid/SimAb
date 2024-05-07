@@ -11,3 +11,6 @@ SimAb_test/output.txt
 SimAb_test/run_sum.txt
 SimAb_test/*.ipynb
 SimAb_test/test.py
+build
+dist
+SimAb_test.egg-info

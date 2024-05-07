@@ -10,9 +10,9 @@ This function runs multiple runs with different initial formation parameters to 
 
 """
 import random
-import variable as var
-from planet import Planet
-from write import Write
+from SimAb_test import variable as var
+from SimAb_test.planet import Planet
+from SimAb_test.write import Write
 import os
 import sys
 
